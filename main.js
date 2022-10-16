@@ -28,9 +28,16 @@ console.log(productsArray)
 // Productos de pantalla
 
 
-
+//aqui esta el for each con solo una funcion que va a ir llamando uno a uno
 productsArray.forEach(product => {
-    productContainer.innerHTML += `
+    cargarProductos(product); 
+});
+
+//esta es la funcion que carga, revisa que no te saque error de async, si te saca error async convierte a async la de arriba
+
+function cargarProductos(product){
+	const producto =
+	      `
     <div class="shop-item" id="${product.id}">
         <span class="shop-item-title">${product.title}</span>
         <img class="shop-item-image" src="${product.images[0]}">
@@ -38,8 +45,10 @@ productsArray.forEach(product => {
             <span class="shop-item-price">$${product.price}</span>
             <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
         </div>
-    </div>`
-});
+    </div>`;
+	const grupoProductos = document.getElementById (`DOV DONDE VA LA LISTA`);
+	grupoProductos.innerHTML += producto;
+}
 
 // Escucho cuando se hace click en un btn ADD
 let addBtns = document.querySelectorAll('.shop-item-button');
